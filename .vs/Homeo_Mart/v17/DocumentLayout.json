@@ -1,0 +1,150 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\services\\jsondeserialisation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:services\\jsondeserialisation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\repositories\\productsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:repositories\\productsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\interfaces\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:interfaces\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\models\\commonresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:models\\commonresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|c:\\users\\admin\\downloads\\bookstore-html\\bookstore-html\\homeopathy_mart\\homeo_mart\\services\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BE883B9-AD4F-4340-929E-F78FCE7C5DA6}|Homeo_Mart.csproj|solutionrelative:services\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JsonDeserialisation.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Services\\JsonDeserialisation.cs",
+              "RelativeDocumentMoniker": "Services\\JsonDeserialisation.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Services\\JsonDeserialisation.cs",
+              "RelativeToolTip": "Services\\JsonDeserialisation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T07:13:06.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:25:43.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Repositories\\ProductsRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ProductsRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Repositories\\ProductsRepository.cs",
+              "RelativeToolTip": "Repositories\\ProductsRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAqwCUAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:01:11.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IProductsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Interfaces\\IProductsRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IProductsRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Interfaces\\IProductsRepository.cs",
+              "RelativeToolTip": "Interfaces\\IProductsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:58:39.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Products.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Models\\Products.cs",
+              "RelativeDocumentMoniker": "Models\\Products.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Models\\Products.cs",
+              "RelativeToolTip": "Models\\Products.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T11:27:10.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAIA8wD0AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:27:13.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CommonResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Models\\CommonResponse.cs",
+              "RelativeDocumentMoniker": "Models\\CommonResponse.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Models\\CommonResponse.cs",
+              "RelativeToolTip": "Models\\CommonResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:17:52.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Services\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Services\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Services\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Services\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:39:55.107Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

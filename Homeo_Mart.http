@@ -1,0 +1,6 @@
+@Homeo_Mart_HostAddress = http://localhost:5267
+
+GET {{Homeo_Mart_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
