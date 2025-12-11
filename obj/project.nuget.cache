@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FXegx6GHkrk=",
+  "dgSpecHash": "arZHRVpTfBU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Downloads\\bookstore-html\\bookstore-html\\Homeopathy_Mart\\Homeo_Mart\\Homeo_Mart.csproj",
+  "projectFilePath": "C:\\Homeopathy\\Homeo_Mart\\Homeo_Mart.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
