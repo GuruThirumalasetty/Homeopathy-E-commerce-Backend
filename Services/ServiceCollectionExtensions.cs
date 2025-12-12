@@ -10,6 +10,7 @@ namespace Homeo_Mart.Services
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IAddressesRepository, AddressesRepository>();
 
             // Add more repositories here in future
             return services;

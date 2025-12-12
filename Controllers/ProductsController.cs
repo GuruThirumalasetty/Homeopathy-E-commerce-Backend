@@ -8,38 +8,50 @@ using static Homeo_Mart.Models.CommonResponse;
 [ApiController]
 public class ProductController : ControllerBase
 {
-    private readonly IProductRepository repo;
+    private readonly IProductRepository _repository;
 
-    public ProductController(IProductRepository repo)
+    public ProductController(IProductRepository repository)
     {
-        this.repo = repo;
+        _repository = repository;
     }
 
-    [HttpPost("insert")]
-    public async Task<IActionResult> Insert([FromBody] product model)
-    {
-        var res = await repo.Insert(model);
-        return Ok(res);
-    }
-
-    [HttpPost("update")]
-    public async Task<IActionResult> Update([FromBody] product model)
-    {
-        var res = await repo.Update(model);
-        return Ok(res);
-    }
-
+    // ------------------------------------------------------------------------
+    // GET ALL PRODUCTS
+    // ------------------------------------------------------------------------
     [HttpPost("get")]
-    public async Task<IActionResult> Get([FromBody] product model)
+    public async Task<IActionResult> GetProducts([FromBody] product model)
     {
-        var res = await repo.Get(model);
-        return Ok(res);
+        var response = await _repository.GetProducts(model);
+        return Ok(response);
     }
 
-    [HttpPost("status_update")]
-    public async Task<IActionResult> StatusUpdate([FromBody] product model)
+    // ------------------------------------------------------------------------
+    // INSERT PRODUCT
+    // ------------------------------------------------------------------------
+    [HttpPost("insert")]
+    public async Task<IActionResult> InsertProduct([FromBody] product model)
     {
-        var res = await repo.StatusUpdate(model);
-        return Ok(res);
+        var response = await _repository.InsertProduct(model);
+        return Ok(response);
+    }
+
+    // ------------------------------------------------------------------------
+    // UPDATE PRODUCT
+    // ------------------------------------------------------------------------
+    [HttpPost("update")]
+    public async Task<IActionResult> UpdateProduct([FromBody] product model)
+    {
+        var response = await _repository.UpdateProduct(model);
+        return Ok(response);
+    }
+
+    // ------------------------------------------------------------------------
+    // UPDATE PRODUCT STATUS
+    // ------------------------------------------------------------------------
+    [HttpPost("change_status")]
+    public async Task<IActionResult> UpdateProductStatus([FromBody] product model)
+    {
+        var response = await _repository.UpdateProductStatus(model);
+        return Ok(response);
     }
 }

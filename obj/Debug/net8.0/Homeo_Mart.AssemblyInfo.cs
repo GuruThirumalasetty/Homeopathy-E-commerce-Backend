@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Homeo_Mart")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+946f80c4a079f7281e35af138a364aedbf54e4b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abc39d6d99ad2edaf191a250301566a13d8ad314")]
 [assembly: System.Reflection.AssemblyProductAttribute("Homeo_Mart")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Homeo_Mart")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

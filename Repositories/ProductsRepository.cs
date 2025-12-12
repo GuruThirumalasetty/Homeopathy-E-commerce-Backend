@@ -3,8 +3,7 @@ using Homeo_Mart.Interfaces;
 using Homeo_Mart.Models;
 using Homeo_Mart.Models.Homeo_Mart.Models;
 using Homeo_Mart.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+using System.Data;
 using System.Net;
 using System.Text.Json;
 using static Homeo_Mart.Models.CommonResponse;
@@ -13,7 +12,9 @@ public class ProductRepository : BaseRepository, IProductRepository
 {
     public ProductRepository(IConfiguration configuration) : base(configuration) { }
 
-    // Build Params (DO NOT CHANGE THIS)
+    // ------------------------------------------------------------------------
+    // Build Parameters for Stored Procedure
+    // ------------------------------------------------------------------------
     private DynamicParameters BuildParams(product model, string action)
     {
         var p = new DynamicParameters();
@@ -35,25 +36,24 @@ public class ProductRepository : BaseRepository, IProductRepository
         p.Add("p_status", model.status);
         p.Add("p_created_by", model.created_by);
         p.Add("p_updated_by", model.updated_by);
+
+        // ⭐ Handles both filesjson & files_list
         p.Add("p_filesJSON", CommonHelper.JsonDeserialisation(model.filesjson, model.files_list));
+
         return p;
     }
 
-    // ➤ INSERT PRODUCT
-    public async Task<ApiResponse<object>> Insert(product model)
+    // ------------------------------------------------------------------------
+    // INSERT PRODUCT
+    // ------------------------------------------------------------------------
+    public async Task<ApiResponse<int>> InsertProduct(product model)
     {
         try
         {
             var parameters = BuildParams(model, "insert");
+            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
 
-            using var conn = GetConnection();
-            var result = await conn.QueryFirstOrDefaultAsync<object>(
-                "hm_manage_product",
-                parameters,
-                commandType: System.Data.CommandType.StoredProcedure
-            );
-
-            return new ApiResponse<object>
+            return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.OK,
                 Message = "Product inserted successfully",
@@ -62,30 +62,26 @@ public class ProductRepository : BaseRepository, IProductRepository
         }
         catch (Exception ex)
         {
-            return new ApiResponse<object>
+            return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.InternalServerError,
                 Message = $"Insert failed: {ex.Message}",
-                Data = null
+                Data = 0
             };
         }
     }
 
-    // ➤ UPDATE PRODUCT
-    public async Task<ApiResponse<object>> Update(product model)
+    // ------------------------------------------------------------------------
+    // UPDATE PRODUCT
+    // ------------------------------------------------------------------------
+    public async Task<ApiResponse<int>> UpdateProduct(product model)
     {
         try
         {
             var parameters = BuildParams(model, "update");
+            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
 
-            using var conn = GetConnection();
-            var result = await conn.QueryFirstOrDefaultAsync<object>(
-                "hm_manage_product",
-                parameters,
-                commandType: System.Data.CommandType.StoredProcedure
-            );
-
-            return new ApiResponse<object>
+            return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.OK,
                 Message = "Product updated successfully",
@@ -94,35 +90,68 @@ public class ProductRepository : BaseRepository, IProductRepository
         }
         catch (Exception ex)
         {
-            return new ApiResponse<object>
+            return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.InternalServerError,
                 Message = $"Update failed: {ex.Message}",
-                Data = null
+                Data = 0
             };
         }
     }
 
-    // ➤ GET ALL / GET BY ID
-    public async Task<ApiListResponse<product>> Get(product model)
+    // ------------------------------------------------------------------------
+    // UPDATE PRODUCT STATUS
+    // ------------------------------------------------------------------------
+    public async Task<ApiResponse<int>> UpdateProductStatus(product model)
+    {
+        try
+        {
+            var parameters = BuildParams(model, "status_update");
+            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
+
+            return new ApiResponse<int>
+            {
+                status_code = HttpStatusCode.OK,
+                Message = "Product status updated successfully",
+                Data = result
+            };
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponse<int>
+            {
+                status_code = HttpStatusCode.InternalServerError,
+                Message = $"Status update failed: {ex.Message}",
+                Data = 0
+            };
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // GET PRODUCTS (ALL OR BY ID)
+    // ------------------------------------------------------------------------
+    public async Task<ApiListResponse<product>> GetProducts(product model)
     {
         try
         {
             var parameters = BuildParams(model, "get");
 
             using var conn = GetConnection();
-            var list = await conn.QueryAsync<product>(
-                "hm_manage_product",
+            var list = (await conn.QueryAsync<product>(
+                "hm_pr_manage_product",
                 parameters,
-                commandType: System.Data.CommandType.StoredProcedure
-            );
+                commandType: CommandType.StoredProcedure
+            )).ToList();
+
+            // Deserialize File JSON to List
             foreach (var item in list)
             {
                 if (!string.IsNullOrWhiteSpace(item.files))
                 {
                     try
                     {
-                        item.files_list = JsonSerializer.Deserialize<List<product_file>>(item.files);
+                        item.files_list =
+                            JsonSerializer.Deserialize<List<product_file>>(item.files);
                         item.files = null;
                     }
                     catch
@@ -130,13 +159,16 @@ public class ProductRepository : BaseRepository, IProductRepository
                         item.files_list = new List<product_file>();
                     }
                 }
+                else
+                {
+                    item.files_list = new List<product_file>();
+                }
             }
-            bool hasData = list.Any();
 
             return new ApiListResponse<product>
             {
-                status_code = hasData ? HttpStatusCode.OK : HttpStatusCode.NotFound,
-                Message = hasData ? "Products fetched successfully" : "No products found",
+                status_code = list.Any() ? HttpStatusCode.OK : HttpStatusCode.NotFound,
+                Message = list.Any() ? "Products retrieved successfully" : "No products found",
                 Data = list
             };
         }
@@ -147,38 +179,6 @@ public class ProductRepository : BaseRepository, IProductRepository
                 status_code = HttpStatusCode.InternalServerError,
                 Message = $"Error fetching products: {ex.Message}",
                 Data = Enumerable.Empty<product>()
-            };
-        }
-    }
-
-    // ➤ STATUS UPDATE (SOFT DELETE)
-    public async Task<ApiResponse<object>> StatusUpdate(product model)
-    {
-        try
-        {
-            var parameters = BuildParams(model, "status_update");
-
-            using var conn = GetConnection();
-            var result = await conn.QueryFirstOrDefaultAsync<object>(
-                "hm_manage_product",
-                parameters,
-                commandType: System.Data.CommandType.StoredProcedure
-            );
-
-            return new ApiResponse<object>
-            {
-                status_code = HttpStatusCode.OK,
-                Message = "Product status updated successfully",
-                Data = result
-            };
-        }
-        catch (Exception ex)
-        {
-            return new ApiResponse<object>
-            {
-                status_code = HttpStatusCode.InternalServerError,
-                Message = $"Status update failed: {ex.Message}",
-                Data = null
             };
         }
     }
