@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Services\\JsonDeserialisation.cs",
               "ToolTip": "C:\\Homeopathy\\Homeo_Mart\\Services\\JsonDeserialisation.cs",
               "RelativeToolTip": "Services\\JsonDeserialisation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBIAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-10T07:13:06.823Z",
               "EditorCaption": ""
@@ -77,9 +77,10 @@
               "RelativeDocumentMoniker": "Repositories\\ProductsRepository.cs",
               "ToolTip": "C:\\Homeopathy\\Homeo_Mart\\Repositories\\ProductsRepository.cs",
               "RelativeToolTip": "Repositories\\ProductsRepository.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAqwCUAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T05:01:11.832Z"
+              "WhenOpened": "2025-12-10T05:01:11.832Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
