@@ -6,7 +6,7 @@ namespace Homeo_Mart.Models
     {
         public class product
         {
-            public string action_type { get; set; }
+            public string? action_type { get; set; }
 
             public int? id { get; set; }
             public string? name { get; set; }
@@ -50,6 +50,7 @@ namespace Homeo_Mart.Models
         public string? file_path { get; set; }
         public string? file_type { get; set; }
         public int? status { get; set; }
+        public int? mode { get; set; }
         public string? created_on { get; set; }
         public int? created_by { get; set; }
         public string? updated_on { get; set; }

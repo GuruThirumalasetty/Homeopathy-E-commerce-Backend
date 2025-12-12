@@ -1,18 +1,72 @@
 [
   {
-    "ContainingType": "CategoryController",
-    "Method": "GetCategories",
-    "RelativePath": "api/Category/getallcategories",
+    "ContainingType": "AddressesController",
+    "Method": "StatusUpdateAddress",
+    "RelativePath": "api/Addresses/change_status",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Address",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AddressesController",
+    "Method": "GetAddresses",
+    "RelativePath": "api/Addresses/get",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Address",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AddressesController",
+    "Method": "InsertAddress",
+    "RelativePath": "api/Addresses/insert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Address",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AddressesController",
+    "Method": "UpdateAddress",
+    "RelativePath": "api/Addresses/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Address",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "CategoryController",
-    "Method": "GetCategoryById",
-    "RelativePath": "api/Category/getbyid",
+    "Method": "UpdateCategoryStatus",
+    "RelativePath": "api/Category/change_status",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -23,6 +77,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CategoryController",
+    "Method": "GetCategories",
+    "RelativePath": "api/Category/get",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -58,16 +122,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CategoryController",
-    "Method": "UpdateCategoryStatus",
-    "RelativePath": "api/Category/updatestatus",
+    "ContainingType": "ProductController",
+    "Method": "UpdateProductStatus",
+    "RelativePath": "api/Product/change_status",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "Homeo_Mart.Models.Category",
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Homeo_Mart.Models.product",
         "IsRequired": true
       }
     ],
@@ -75,7 +139,7 @@
   },
   {
     "ContainingType": "ProductController",
-    "Method": "Get",
+    "Method": "GetProducts",
     "RelativePath": "api/Product/get",
     "HttpMethod": "POST",
     "IsController": true,
@@ -91,7 +155,7 @@
   },
   {
     "ContainingType": "ProductController",
-    "Method": "Insert",
+    "Method": "InsertProduct",
     "RelativePath": "api/Product/insert",
     "HttpMethod": "POST",
     "IsController": true,
@@ -107,23 +171,7 @@
   },
   {
     "ContainingType": "ProductController",
-    "Method": "StatusUpdate",
-    "RelativePath": "api/Product/status_update",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Homeo_Mart.Models.Homeo_Mart.Models.product",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ProductController",
-    "Method": "Update",
+    "Method": "UpdateProduct",
     "RelativePath": "api/Product/update",
     "HttpMethod": "POST",
     "IsController": true,

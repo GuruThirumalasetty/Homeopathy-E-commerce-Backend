@@ -14,7 +14,7 @@ public class CategoryController : ControllerBase
     }
 
     // GET ALL CATEGORIES
-    [HttpPost("getallcategories")]
+    [HttpPost("get")]
     public async Task<IActionResult> GetCategories()
     {
         var response = await _categoryRepository.GetCategories();
@@ -44,21 +44,13 @@ public class CategoryController : ControllerBase
     }
 
     // UPDATE CATEGORY STATUS
-    [HttpPost("updatestatus")]
+    [HttpPost("change_status")]
     public async Task<IActionResult> UpdateCategoryStatus([FromBody] Category category)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         var response = await _categoryRepository.UpdateCategoryStatus(category);
-        return Ok(response);
-    }
-
-    // GET CATEGORY BY ID
-    [HttpPost("getbyid")]
-    public async Task<IActionResult> GetCategoryById([FromBody] Category category)
-    {
-        var response = await _categoryRepository.GetCategoryById(category);
         return Ok(response);
     }
 }
