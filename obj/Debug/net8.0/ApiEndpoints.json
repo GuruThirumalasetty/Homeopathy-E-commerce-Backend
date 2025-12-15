@@ -122,6 +122,70 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PermissionsController",
+    "Method": "get_permissions",
+    "RelativePath": "api/Permissions/get",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Permission",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PermissionsController",
+    "Method": "insert_permissions",
+    "RelativePath": "api/Permissions/insert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Permission",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PermissionsController",
+    "Method": "status_update_permissions",
+    "RelativePath": "api/Permissions/status_update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Permission",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PermissionsController",
+    "Method": "update_permissions",
+    "RelativePath": "api/Permissions/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Homeo_Mart.Models.Permission",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProductController",
     "Method": "UpdateProductStatus",
     "RelativePath": "api/Product/change_status",
