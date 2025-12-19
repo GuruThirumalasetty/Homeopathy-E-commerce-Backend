@@ -482,3 +482,23 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/.vs/Homeo_Mart/v17/DocumentLayout.backup.json
+/.vs/Homeo_Mart/v17/.suo
+/.vs/Homeo_Mart/v17/.futdcache.v2
+/.vs/Homeo_Mart/v17/.suo
+/.vs/Homeo_Mart/v17/DocumentLayout.backup.json
+/.vs/Homeo_Mart/v17/DocumentLayout.json
+/bin/Debug/net8.0/Homeo_Mart.dll
+/bin/Debug/net8.0/Homeo_Mart.exe
+/bin/Debug/net8.0/Homeo_Mart.pdb
+/obj/Debug/net8.0/EndpointInfo/Homeo_Mart.json
+/obj/Debug/net8.0/ref/Homeo_Mart.dll
+/obj/Debug/net8.0/refint/Homeo_Mart.dll
+/obj/Debug/net8.0/ApiEndpoints.json
+/obj/Debug/net8.0/apphost.exe
+/obj/Debug/net8.0/Homeo_Mart.AssemblyInfo.cs
+/obj/Debug/net8.0/Homeo_Mart.AssemblyInfoInputs.cache
+/obj/Debug/net8.0/Homeo_Mart.dll
+/obj/Debug/net8.0/Homeo_Mart.pdb
+/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
+/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
