@@ -70,7 +70,7 @@ namespace Homeo_Mart.Controllers
             }
         }
 
-        [HttpPut("update_user")]
+        [HttpPost("update_user")]
         public async Task<IActionResult> UpdateUser([FromBody] User user)
         {
             if (!ModelState.IsValid)

@@ -1,19 +1,33 @@
-﻿using Homeo_Mart.Models;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace Homeo_Mart.Services
 {
-
     public static class CommonHelper
     {
-        public static string JsonDeserialisation(string json, List<product_file>? jsonList)
+        /// <summary>
+        /// Universal JSON normalizer.
+        /// Accepts string JSON or any object/list and returns valid JSON.
+        /// </summary>
+        public static string NormalizeJson(object? input)
         {
-            if (!string.IsNullOrWhiteSpace(json))
+            // CASE 1 → Null
+            if (input == null)
+                return "[]";
+
+            // CASE 2 → Input is JSON string
+            if (input is string jsonString)
             {
+                if (string.IsNullOrWhiteSpace(jsonString))
+                    return "[]";
+
                 try
                 {
-                    var parsed = JsonSerializer.Deserialize<List<object>>(json);
-                    return JsonSerializer.Serialize(parsed);
+                    // Deserialize without knowing model
+                    JsonElement element =
+                        JsonSerializer.Deserialize<JsonElement>(jsonString);
+
+                    // Serialize again to normalize
+                    return JsonSerializer.Serialize(element);
                 }
                 catch
                 {
@@ -21,14 +35,23 @@ namespace Homeo_Mart.Services
                 }
             }
 
-            // CASE 2 → Angular sent files_list instead
-            if (jsonList != null && jsonList.Count > 0)
+            // CASE 3 → Any object / list / array / model
+            try
             {
-                return JsonSerializer.Serialize(jsonList);
-            }
+                // Serialize object
+                string serialized = JsonSerializer.Serialize(input);
 
-            // CASE 3 → No files provided
-            return "[]";
+                // Deserialize to validate JSON
+                JsonElement element =
+                    JsonSerializer.Deserialize<JsonElement>(serialized);
+
+                // Re-serialize normalized JSON
+                return JsonSerializer.Serialize(element);
+            }
+            catch
+            {
+                return "[]";
+            }
         }
     }
 }
