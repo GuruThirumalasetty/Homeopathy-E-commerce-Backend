@@ -1,71 +1,67 @@
 ﻿using Dapper;
 using Homeo_Mart.Interfaces;
 using Homeo_Mart.Models;
-using Homeo_Mart.Models.Homeo_Mart.Models;
 using Homeo_Mart.Services;
 using System.Data;
 using System.Net;
 using System.Text.Json;
 using static Homeo_Mart.Models.CommonResponse;
 
-public class ProductRepository : BaseRepository, IProductRepository
+public class RoleRepository : BaseRepository, IRoleRepository
 {
-    public ProductRepository(IConfiguration configuration) : base(configuration) { }
+    public RoleRepository(IConfiguration configuration) : base(configuration) { }
 
     // ------------------------------------------------------------------------
-    // Build Parameters for Stored Procedure
+    // Build Parameters
     // ------------------------------------------------------------------------
-    private DynamicParameters BuildParams(product model, string action)
+    private DynamicParameters BuildParams(role model, string action)
     {
         var p = new DynamicParameters();
+
         p.Add("p_action_type", action);
-        p.Add("p_id", model.id);
+        p.Add("p_id", model.id, DbType.Int32, ParameterDirection.InputOutput);
         p.Add("p_name", model.name);
-        p.Add("p_code", model.code);
-        p.Add("p_type", model.type);
-        p.Add("p_contributor_name", model.contributor_name);
-        p.Add("p_category_id", model.category_id);
-        p.Add("p_stock_quantity", model.stock_quantity);
-        p.Add("p_price", model.price);
-        p.Add("p_discount_type", model.discount_type);
-        p.Add("p_discount", model.discount);
-        p.Add("p_rating", model.rating);
         p.Add("p_description", model.description);
-        p.Add("p_shipping_charges", model.shipping_charges);
-        p.Add("p_tax", model.tax);
         p.Add("p_status", model.status);
         p.Add("p_created_by", model.created_by);
         p.Add("p_updated_by", model.updated_by);
 
-        // ⭐ Handles both filesjson & files_list
-        object? filesPayload =
-    model.files_list != null && model.files_list.Count > 0
-        ? model.files_list
-        : model.filesjson;
-
+        // ⭐ Universal JSON handler (string OR object/list)
+        object? permissionsPayload =
+    model.permissions_list != null && model.permissions_list.Count > 0
+        ? model.permissions_list
+        : model.permissions;
         p.Add(
-            "p_filesJSON",
-            CommonHelper.NormalizeJson(filesPayload)
-        );
+    "p_permissions",
+    CommonHelper.NormalizeJson(permissionsPayload)
+);
 
         return p;
     }
 
     // ------------------------------------------------------------------------
-    // INSERT PRODUCT
+    // INSERT ROLE
     // ------------------------------------------------------------------------
-    public async Task<ApiResponse<int>> InsertProduct(product model)
+    public async Task<ApiResponse<int>> InsertRole(role model)
     {
         try
         {
             var parameters = BuildParams(model, "insert");
-            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
+
+            using var conn = GetConnection();
+            await conn.ExecuteAsync(
+                "hm_pr_manage_roles",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            int roleId = parameters.Get<int>("p_id");
 
             return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.OK,
-                Message = "Product inserted successfully",
-                Data = result
+                Message = "Role inserted successfully",
+                Data = roleId
             };
         }
         catch (Exception ex)
@@ -80,20 +76,26 @@ public class ProductRepository : BaseRepository, IProductRepository
     }
 
     // ------------------------------------------------------------------------
-    // UPDATE PRODUCT
+    // UPDATE ROLE
     // ------------------------------------------------------------------------
-    public async Task<ApiResponse<int>> UpdateProduct(product model)
+    public async Task<ApiResponse<int>> UpdateRole(role model)
     {
         try
         {
             var parameters = BuildParams(model, "update");
-            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
+
+            using var conn = GetConnection();
+            await conn.ExecuteAsync(
+                "hm_pr_manage_roles",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
 
             return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.OK,
-                Message = "Product updated successfully",
-                Data = result
+                Message = "Role updated successfully",
+                Data = model.id
             };
         }
         catch (Exception ex)
@@ -108,20 +110,26 @@ public class ProductRepository : BaseRepository, IProductRepository
     }
 
     // ------------------------------------------------------------------------
-    // UPDATE PRODUCT STATUS
+    // UPDATE ROLE STATUS
     // ------------------------------------------------------------------------
-    public async Task<ApiResponse<int>> UpdateProductStatus(product model)
+    public async Task<ApiResponse<int>> UpdateRoleStatus(role model)
     {
         try
         {
             var parameters = BuildParams(model, "status_update");
-            var result = await QuerySingleAsync<int>("hm_pr_manage_product", parameters);
+
+            using var conn = GetConnection();
+            await conn.ExecuteAsync(
+                "hm_pr_manage_roles",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
 
             return new ApiResponse<int>
             {
                 status_code = HttpStatusCode.OK,
-                Message = "Product status updated successfully",
-                Data = result
+                Message = "Role status updated successfully",
+                Data = model.id
             };
         }
         catch (Exception ex)
@@ -136,57 +144,57 @@ public class ProductRepository : BaseRepository, IProductRepository
     }
 
     // ------------------------------------------------------------------------
-    // GET PRODUCTS (ALL OR BY ID)
+    // GET ROLES
     // ------------------------------------------------------------------------
-    public async Task<ApiListResponse<product>> GetProducts(product model)
+    public async Task<ApiListResponse<role>> GetRoles(role model)
     {
         try
         {
             var parameters = BuildParams(model, "get");
 
             using var conn = GetConnection();
-            var list = (await conn.QueryAsync<product>(
-                "hm_pr_manage_product",
+            var list = (await conn.QueryAsync<role>(
+                "hm_pr_manage_roles",
                 parameters,
                 commandType: CommandType.StoredProcedure
             )).ToList();
 
-            // Deserialize File JSON to List
+            // Deserialize permissions JSON
             foreach (var item in list)
             {
-                if (!string.IsNullOrWhiteSpace(item.files))
+                if (!string.IsNullOrWhiteSpace(item.permissions))
                 {
                     try
                     {
-                        item.files_list =
-                            JsonSerializer.Deserialize<List<product_file>>(item.files);
-                        item.files = null;
+                        item.permissions_list =
+                            JsonSerializer.Deserialize<List<role_permission>>(item.permissions);
+                        item.permissions = null;
                     }
                     catch
                     {
-                        item.files_list = new List<product_file>();
+                        item.permissions_list = new List<role_permission>();
                     }
                 }
                 else
                 {
-                    item.files_list = new List<product_file>();
+                    item.permissions_list = new List<role_permission>();
                 }
             }
 
-            return new ApiListResponse<product>
+            return new ApiListResponse<role>
             {
                 status_code = list.Any() ? HttpStatusCode.OK : HttpStatusCode.NotFound,
-                Message = list.Any() ? "Products retrieved successfully" : "No products found",
+                Message = list.Any() ? "Roles retrieved successfully" : "No roles found",
                 Data = list
             };
         }
         catch (Exception ex)
         {
-            return new ApiListResponse<product>
+            return new ApiListResponse<role>
             {
                 status_code = HttpStatusCode.InternalServerError,
-                Message = $"Error fetching products: {ex.Message}",
-                Data = Enumerable.Empty<product>()
+                Message = $"Error fetching roles: {ex.Message}",
+                Data = Enumerable.Empty<role>()
             };
         }
     }
